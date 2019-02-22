@@ -1,0 +1,53 @@
+De basiske steps i Javascript som vi havde i starten var at tegne en firkant. 
+som vi så kombineret med andre slags måder og bruge javasricpt på som kan ende ud med at blive som sådan noget: 
+
+
+
+DET ER KODEN: 
+var square_1, square_2, square_3, square_4;
+
+function square(x, y, w, h) {
+this.tSpeed = random(.1, .9);
+this.col = [0, random(255), random(200, 255), 100];
+this.x = x;
+this.y = y;
+this.w = w;
+this.h = h;
+
+this.display = function () {
+fill(this.col);
+rectMode(CENTER);
+rect(this.x, this.y, this.w, this.h);
+}
+this.move = function () {
+this.x = this.x * (1 - this.tSpeed) + mouseX * this.tSpeed;
+this.y = this.y * (1 - this.tSpeed) + mouseY * this.tSpeed;
+}
+
+}
+
+
+function setup() {
+createCanvas(600, 400);
+//Her oprettes så en såkaldt "instans" af objektet. Bemærk at instansen oprettes med de variable som sendes i parantes - derfor kaldes funktionen en "constructor" 
+square_1 = new square(300, 300, 60, 80);
+square_2 = new square(100, 150, 30, 40);
+square_3 = new square(150, 200, 30, 50);
+square_4 = new square(350, 250, 70, 30);
+}
+
+function draw() {
+background(0);
+fill(255);
+square_1.display();
+square_1.move();
+
+square_2.display();
+square_2.move();
+
+square_3.display();
+square_3.move();
+
+square_4.display();
+square_4.move();
+}
