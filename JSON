@@ -1,1 +1,58 @@
 
+Vi har lavet JASON som gør at vi har mulighed for at bruge andres data, vi brugte New York timws hvor vi bruge deres biblotek som i kan se her:
+
+/*
+Hvordan er det nu jeg husker jeg nu
+*/
+
+let inp;
+let result;
+let col, card;
+
+function setup() {
+
+    //Først en variabel til din api-key
+    var apiKey = "OGEzmlt2yNGCFH0Ak6P66DWbzfqF5eAw";    
+    //Så en hemmelighed, som vi måske skal bruge
+    var secret = "ilgMtNwxRdkZGjLV";
+    //Og nu til den base url der giver adgang til api'et 
+    var url = "http://api.nytimes.com/svc/books/v3/reviews.json";
+    //Dernæst bygger du den query du vil udføre
+    var query = "?author=Jonathan+Safran+Foer";
+        query += "&noget=nogetandet";
+    
+    
+    
+    createElement("h1", "Spørg New York Times API");
+    
+  
+    
+    createElement ("input").changed(function() {
+        query = "?author=" + inp.value();
+     loadJSON(url + query + "&api-key=" + apiKey, gotData);
+    });
+    
+    result = createElement ("div")
+    .addClass("row");
+    
+    let col = createElement("div")
+    .addClass("col s12 m6")
+    .parent(result);
+ result.hmtl("");
+    function gotData(data) {
+        result.hmtl("");
+        console.log(data);
+        let card = createElement("div")
+        .addClass
+        .parent(col);
+           createElement("h5", data.copyright)
+            .parent(result);
+        data.results.forEach(function(e){
+            createElement("h5", e.book_title)
+            .addClass("card-title")
+            .parent(card);
+        });
+     
+     
+    }
+}
